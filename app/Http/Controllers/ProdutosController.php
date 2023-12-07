@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Produtos;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class ProdutosController extends Controller
 {
@@ -89,8 +90,18 @@ class ProdutosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        dd('destroyyy');
+        $produto = Produtos::find($request->id);
+        $produto->delete();
+        
+        // dd($retornoBanco);
+
+        // if($retornoBanco){
+
+        // }
+
+        return response()->json(['success' => true]);
+        // dd('destroyyy');
     }
 }

@@ -65,7 +65,10 @@
                                     <use xlink:href="#pencil-fill" />
                                 </svg>
                             </button>
-                            <a href="#" class="btn btn-danger btn-sm">
+                            {{-- Deletado registro com auxilio de JS e Ajax - super-gestao.js --}}
+                            <meta name="csrf-token" content="{{ csrf_token() }}" />
+                            {{-- @dd(csrf_token()) --}}
+                            <a onclick="deleteProduto('{{route('produto.delete')}}', {{$dadosProduto->id}})" class="btn btn-danger btn-sm">
                                 <svg class="bi">
                                     <use xlink:href="#x-circle-fill" />
                                 </svg>

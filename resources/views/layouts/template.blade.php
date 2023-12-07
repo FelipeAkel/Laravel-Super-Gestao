@@ -56,11 +56,18 @@
             </main>
         </div>
     </div>
+    {{-- Ajax --}}
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 
     <script src="{{ asset('js/bootstrap.bundle.js') }}" ></script>
     <script src="{{ asset('js/color-modes.js') }}"></script>
     <script src="{{ asset('js/chart.umd.js') }}" ></script>
     <script src="{{ asset('js/dashboard.js') }}"></script>
+
+    {{-- BlocUI loading --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.blockUI/2.70/jquery.blockUI.js"></script>
+
+    <script src="js/super-gestao.js"></script>
 </body>
 
 </html>
