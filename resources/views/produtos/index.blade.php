@@ -7,7 +7,8 @@
         <h1 class="h2">Produtos</h1>
     </div>
 
-    <form class="row" action="" method="GET">
+    <h6>Filtros</h6>
+    <form class="row" action="{{ route('produto.index') }}" method="GET">
         <div class="col-3">
             <input type="text" class="form-control" name="no_produto" id="no_produto" placeholder="Produto">
         </div>
@@ -39,7 +40,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($retornoProdutos as $indice => $dadosProduto)
+                @forelse ($retornoProdutos as $indice => $dadosProduto)
                     <tr>
                         <td>{{ $dadosProduto->id }}</td>
                         <td>{{ $dadosProduto->no_produto }}</td>
@@ -64,14 +65,18 @@
                                     <use xlink:href="#pencil-fill" />
                                 </svg>
                             </button>
-                            <button type="button" class="btn btn-danger btn-sm">
+                            <a href="#" class="btn btn-danger btn-sm">
                                 <svg class="bi">
                                     <use xlink:href="#x-circle-fill" />
                                 </svg>
-                            </button>
+                            </a>
                         </td>
                     </tr>
-                @endforeach
+                    @empty
+                    <tr>
+                        <td colspan="6" align="center" style="color: red" ><b>Não existe dados</b></td>
+                    </tr>
+                @endforelse
 
             </tbody>
         </table>

@@ -7,14 +7,24 @@ use App\Models\Produtos;
 
 class ProdutosController extends Controller
 {
+
+    public function __construct(Produtos $produtos){
+        $this->produto = $produtos;
+        // Basicamente, trata-se de: $retornoProdutos = Produtos::all();
+    }
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $retornoProdutos = Produtos::all();
+        $no_produto = $request->input('no_produto') ?? "";
+        $vl_preco = $request->input('vl_preco') ?? null;
+        
+        $retornoProdutos = $this->produto->getProdutosIndex($no_produto, $vl_preco);
+
         return view('produtos.index', ['retornoProdutos' => $retornoProdutos]);
     }
 
@@ -81,6 +91,6 @@ class ProdutosController extends Controller
      */
     public function destroy($id)
     {
-        //
+        dd('destroyyy');
     }
 }
