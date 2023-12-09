@@ -20,7 +20,7 @@
             <button type="submit" class="btn btn-primary">Pesquisar</button>
         </div>
         <div class="col-2">
-            <a type="button" class="btn btn-light float-end">Novo Produto</a>
+            <a href="{{ route('produto.create') }}" class="btn btn-light float-end">Novo Produto</a>
         </div>
     </form>
 
@@ -35,7 +35,6 @@
                     <th scope="col">Produto</th>
                     <th scope="col">Preço</th>
                     <th scope="col">Data Criação</th>
-                    <th scope="col">Data Exclusão</th>
                     <th scope="col">Ações</th>
                 </tr>
             </thead>
@@ -47,14 +46,6 @@
                         <td>R$: {{ number_format($dadosProduto->vl_preco, 2, ',', '.') }}</td>
                         <td>{{ date_format($dadosProduto->created_at, 'd/m/Y H:i') }}</td>
                         <td>
-                            @empty(!$dadosProduto->deleted_at)
-                                @php
-                                    $deleted_at = new DateTimeImmutable($dadosProduto->deleted_at);
-                                    echo $deleted_at->format('d/m/Y H:i');
-                                @endphp
-                            @endempty
-                        </td>
-                        <td>
                             <button type="button" class="btn btn-info btn-sm">
                                 <svg class="bi">
                                     <use xlink:href="#eye-fill" />
@@ -65,14 +56,23 @@
                                     <use xlink:href="#pencil-fill" />
                                 </svg>
                             </button>
-                            {{-- Deletado registro com auxilio de JS e Ajax - super-gestao.js --}}
-                            <meta name="csrf-token" content="{{ csrf_token() }}" />
-                            {{-- @dd(csrf_token()) --}}
-                            <a onclick="deleteProduto('{{route('produto.delete')}}', {{$dadosProduto->id}})" class="btn btn-danger btn-sm">
-                                <svg class="bi">
-                                    <use xlink:href="#x-circle-fill" />
-                                </svg>
-                            </a>
+                            {{-- Deletado registro com auxilio de JS e Ajax - super-gestao.js 
+                                    <meta name="csrf-token" content="{{ csrf_token() }}" />
+                                    <a onclick="deleteProduto('{{route('produto.delete')}}', {{$dadosProduto->id}})" class="btn btn-danger btn-sm">
+                            --}}
+                            <form id="form_excluir_{{$dadosProduto->id}}" action="{{ route('produto.delete', ['produto' => $dadosProduto->id]) }}" method="POST">
+                                @method('DELETE')
+                                @csrf
+                                <a href="#" 
+                                    onclick="document.getElementById('form_excluir_{{$dadosProduto->id}}').submit()"
+                                    class="btn btn-danger btn-sm"
+                                >
+                                    <svg class="bi">
+                                        <use xlink:href="#x-circle-fill" />
+                                    </svg>
+                                </a>
+                            </form>
+
                         </td>
                     </tr>
                     @empty

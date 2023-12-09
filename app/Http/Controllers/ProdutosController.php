@@ -36,7 +36,7 @@ class ProdutosController extends Controller
      */
     public function create()
     {
-        //
+        return view('produtos.create');
     }
 
     /**
@@ -47,7 +47,26 @@ class ProdutosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $regras_validacao = [
+            'no_produto' => 'required | min:3',
+            'vl_preco' => 'required | numeric',
+        ];
+        $msn_validacao = [
+            'required' => 'O campo é obrigatório!',
+            'no_produto.min' => 'Campo deve ter no mínimo 3 caracteres!',
+            'vl_preco.numeric' => 'O campo deve ser numérico!',
+        ];
+        $request->validate($regras_validacao, $msn_validacao);
+
+        $retornoBanco = Produtos::create($request->all());
+
+        if($retornoBanco == true){
+            echo "Sucesso! Produto cadastrado com sucesso!";
+            return redirect()->route('produto.index');
+        } else {
+            echo "Erro! Não foi possível cadastrar o produto.";
+        }
+
     }
 
     /**
@@ -69,7 +88,7 @@ class ProdutosController extends Controller
      */
     public function edit($id)
     {
-        //
+        dd($id);
     }
 
     /**
@@ -90,18 +109,14 @@ class ProdutosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request)
+    public function destroy(Request $request, $id)
     {
-        $produto = Produtos::find($request->id);
+        $produto = Produtos::find($id);
         $produto->delete();
         
-        // dd($retornoBanco);
+        return redirect()->route('produto.index');
 
-        // if($retornoBanco){
-
-        // }
-
-        return response()->json(['success' => true]);
-        // dd('destroyyy');
+        // Delete com JS e Ajax - o Retorno do delete com o find é 1, em regra, ou seja, 1 registro foi deletado
+        // return response()->json(['success' => true]);
     }
 }
