@@ -4,7 +4,7 @@
 
 @section('conteudo')
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">Produtos</h1>
+        <h1 class="h2">Listar Produtos</h1>
     </div>
 
     <h6>Filtros</h6>
@@ -51,11 +51,11 @@
                                     <use xlink:href="#eye-fill" />
                                 </svg>
                             </button>
-                            <button type="button" class="btn btn-primary btn-sm">
+                            <a href="{{ route('produto.edit', ['produto' => $dadosProduto->id]) }}" class="btn btn-primary btn-sm">
                                 <svg class="bi">
                                     <use xlink:href="#pencil-fill" />
                                 </svg>
-                            </button>
+                            </a>
                             {{-- Deletado registro com auxilio de JS e Ajax - super-gestao.js 
                                     <meta name="csrf-token" content="{{ csrf_token() }}" />
                                     <a onclick="deleteProduto('{{route('produto.delete')}}', {{$dadosProduto->id}})" class="btn btn-danger btn-sm">

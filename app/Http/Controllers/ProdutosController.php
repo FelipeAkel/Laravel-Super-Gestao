@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Produtos;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Brian2694\Toastr\Facades\Toastr;
 
 class ProdutosController extends Controller
 {
@@ -47,6 +48,7 @@ class ProdutosController extends Controller
      */
     public function store(Request $request)
     {
+
         $regras_validacao = [
             'no_produto' => 'required | min:3',
             'vl_preco' => 'required | numeric',
@@ -61,11 +63,11 @@ class ProdutosController extends Controller
         $retornoBanco = Produtos::create($request->all());
 
         if($retornoBanco == true){
-            echo "Sucesso! Produto cadastrado com sucesso!";
-            return redirect()->route('produto.index');
+            Toastr::success('Produto cadastrado no sistema.', 'Sucesso!');
         } else {
-            echo "Erro! Não foi possível cadastrar o produto.";
+            Toastr::error('Não foi possível cadastrar o produto.', 'Erro!');
         }
+        return redirect()->route('produto.index');
 
     }
 
@@ -88,7 +90,9 @@ class ProdutosController extends Controller
      */
     public function edit($id)
     {
-        dd($id);
+        $retornoProduto = Produtos::find($id);
+
+        return view('produtos.edit', ['retornoProduto' => $retornoProduto]);
     }
 
     /**
@@ -100,7 +104,28 @@ class ProdutosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $regras_validacao = [
+            'no_produto' => 'required | min:3',
+            'vl_preco' => 'required | numeric',
+        ];
+        $msn_validacao = [
+            'required' => 'O campo é obrigatório!',
+            'no_produto.min' => 'Campo deve ter no mínimo 3 caracteres!',
+            'vl_preco.numeric' => 'O campo deve ser numérico!',
+        ];
+        $request->validate($regras_validacao, $msn_validacao);
+
+        $produto = Produtos::find($id);
+
+        $retornoBanco = $produto->update($request->all());
+
+        if($retornoBanco == true){
+            Toastr::success('Produto atualizados no sistema.', 'Sucesso!');
+        } else {
+            Toastr::error('Não foi possível atualizar o produto.', 'Erro!');
+        }
+        return redirect()->route('produto.index');
+
     }
 
     /**
@@ -112,9 +137,15 @@ class ProdutosController extends Controller
     public function destroy(Request $request, $id)
     {
         $produto = Produtos::find($id);
-        $produto->delete();
-        
+        $retornoBanco = $produto->delete();
+
+        if($retornoBanco == true){
+            Toastr::success('Produto excluído no sistema.', 'Sucesso!');
+        } else {
+            Toastr::error('Não foi possível excluir o produto.', 'Erro!');
+        }
         return redirect()->route('produto.index');
+
 
         // Delete com JS e Ajax - o Retorno do delete com o find é 1, em regra, ou seja, 1 registro foi deletado
         // return response()->json(['success' => true]);
