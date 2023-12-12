@@ -46,11 +46,6 @@
                         <td>R$: {{ number_format($dadosProduto->vl_preco, 2, ',', '.') }}</td>
                         <td>{{ date_format($dadosProduto->created_at, 'd/m/Y H:i') }}</td>
                         <td>
-                            <button type="button" class="btn btn-info btn-sm">
-                                <svg class="bi">
-                                    <use xlink:href="#eye-fill" />
-                                </svg>
-                            </button>
                             <a href="{{ route('produto.edit', ['produto' => $dadosProduto->id]) }}" class="btn btn-primary btn-sm">
                                 <svg class="bi">
                                     <use xlink:href="#pencil-fill" />

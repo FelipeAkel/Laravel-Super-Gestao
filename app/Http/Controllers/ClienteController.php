@@ -60,7 +60,10 @@ class ClienteController extends Controller
      */
     public function show($id)
     {
-        //
+        $arrayCliente = Cliente::find([$id])->toArray();
+        // $$retornoCliente->toArray()
+        // dd($retornoCliente);
+        return view('cliente.show', compact('arrayCliente'));
     }
 
     /**

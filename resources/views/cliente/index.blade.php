@@ -31,7 +31,7 @@
     <hr>
 
     <h2>Resultado</h2>
-        <div class="table-responsive small">
+    <div class="table-responsive small">
         <table class="table table-striped table-sm">
             <thead>
                 <tr>
@@ -44,7 +44,6 @@
             </thead>
             <tbody>
 
-{{-- @dd($retornoCliente); --}}
                 @forelse ($retornoCliente as $indice => $dadosCliente)
                     <tr>
                         <td>{{ $dadosCliente->id }}</td>
@@ -52,11 +51,11 @@
                         <td>{{ $dadosCliente->nr_cep }}</td>
                         <td>{{ $dadosCliente->ds_uf }}</td>
                         <td>
-                            <button type="button" class="btn btn-info btn-sm">
+                            <a href="{{ route('cliente.show', $dadosCliente->id) }}" class="btn btn-info btn-sm">
                                 <svg class="bi">
                                     <use xlink:href="#eye-fill" />
                                 </svg>
-                            </button>
+                            </a>
                             <a href="#" class="btn btn-primary btn-sm">
                                 <svg class="bi">
                                     <use xlink:href="#pencil-fill" />
