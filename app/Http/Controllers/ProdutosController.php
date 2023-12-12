@@ -116,7 +116,6 @@ class ProdutosController extends Controller
         $request->validate($regras_validacao, $msn_validacao);
 
         $produto = Produtos::find($id);
-
         $retornoBanco = $produto->update($request->all());
 
         if($retornoBanco == true){
