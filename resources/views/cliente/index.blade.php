@@ -56,12 +56,22 @@
                                     <use xlink:href="#eye-fill" />
                                 </svg>
                             </a>
-                            <a href="#" class="btn btn-primary btn-sm">
+                            <a href="{{ route('cliente.edit', $dadosCliente->id) }}" class="btn btn-primary btn-sm">
                                 <svg class="bi">
                                     <use xlink:href="#pencil-fill" />
                                 </svg>
                             </a>
                          
+                            <form id="form_excluir_{{$dadosCliente->id}}" action="{{ route('cliente.delete', $dadosCliente->id) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <a href="#" onclick="document.getElementById('form_excluir_{{$dadosCliente->id}}').submit()" class="btn btn-danger btn-sm">
+                                    <svg class="bi">
+                                        <use xlink:href="#x-circle-fill" />
+                                    </svg>
+                                </a>
+                            </form>
+
                             {{-- <form id="form_excluir_{{$dadosCliente->id}}" action="{{ route('produto.delete', ['produto' => $dadosCliente->id]) }}" method="POST">
                                 @method('DELETE')
                                 @csrf

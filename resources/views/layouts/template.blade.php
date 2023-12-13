@@ -30,7 +30,7 @@
 
 <body>
 
-    @include('layouts.component.icon')
+    @include('layouts._component.icon')
 
     <header class="navbar sticky-top bg-dark flex-md-nowrap p-0 shadow" data-bs-theme="dark">
         <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6 text-white" href="#">Super Gestão - SG</a>
@@ -50,7 +50,7 @@
     <div class="container-fluid">
         <div class="row">
             
-            @include('layouts.component.menu')
+            @include('layouts._component.menu')
 
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
                 
@@ -60,7 +60,7 @@
         </div>
     </div>
     {{-- Ajax --}}
-    {{-- <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script> --}}
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 
     <script src="{{ asset('js/bootstrap.bundle.js') }}" ></script>
     <script src="{{ asset('js/color-modes.js') }}"></script>
@@ -70,7 +70,7 @@
     {{-- BlocUI loading --}}
     {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.blockUI/2.70/jquery.blockUI.js"></script> --}}
 
-    {{-- <script src="js/super-gestao.js"></script> --}}
+    <script src="{{ asset('js/super-gestao.js') }}"></script>
 
     {{-- Alertas com o Toastr --}}
     <script src="http://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>

@@ -29,7 +29,7 @@
                 </div>
             @endif
         </div>
-        <button type="submit" class="btn btn-success">Cadastrar</button>
+        <button type="submit" class="btn btn-success">Cadastrar Produto</button>
     </form>
 
 @endsection
