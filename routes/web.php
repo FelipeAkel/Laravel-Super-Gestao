@@ -1,6 +1,7 @@
 <?php
 use App\Http\Controllers\ProdutosController;
 use App\Http\Controllers\ClienteController;
+use App\Http\Controllers\VendaController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -37,6 +38,13 @@ Route::prefix('clientes')->group(function(){
     Route::put('/cliente/{cliente}', [ClienteController::class, 'update'])->where('cliente', '[0-9]+')->name('cliente.update');
     Route::delete('cliente/{cliente}', [ClienteController::class, 'destroy'])->name('cliente.delete');
 });
+
+Route::prefix('vendas')->group(function (){
+    Route::get('/', [VendaController::class, 'index'])->name('venda.index');
+    Route::get('/create', [VendaController::class, 'create'])->name('venda.create');
+    Route::post('/create', [VendaController::class, 'store'])->name('venda.store');
+});
+
 
 
 // Verb          Path                        Action  Route Name

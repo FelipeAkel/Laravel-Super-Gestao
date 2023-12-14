@@ -71,20 +71,6 @@
                                     </svg>
                                 </a>
                             </form>
-
-                            {{-- <form id="form_excluir_{{$dadosCliente->id}}" action="{{ route('produto.delete', ['produto' => $dadosCliente->id]) }}" method="POST">
-                                @method('DELETE')
-                                @csrf
-                                <a href="#" 
-                                    onclick="document.getElementById('form_excluir_{{$dadosCliente->id}}').submit()"
-                                    class="btn btn-danger btn-sm"
-                                >
-                                    <svg class="bi">
-                                        <use xlink:href="#x-circle-fill" />
-                                    </svg>
-                                </a>
-                            </form> --}}
-
                         </td>
                     </tr>
                     @empty
