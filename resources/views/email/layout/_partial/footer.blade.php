@@ -4,7 +4,7 @@
         <tr>
             <td class="content-block">
                 <span class="apple-link">Super Gestão - SG</span>
-                <br> Não gosta desses e-mails? <a href="#">Cancelar subscrição</a>.
+                <br> Não gosta desses e-mails? <a href="#">Cancelar inscrição</a>.
             </td>
         </tr>
     </table>

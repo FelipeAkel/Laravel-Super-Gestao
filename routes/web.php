@@ -17,9 +17,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::prefix('desboard')->group(function(){
-    Route::get('/', [DasboardController::class, 'index'])->name('dasboard.index');
-});
+Route::get('/desboard', [DasboardController::class, 'index'])->name('dasboard.index');
 
 Route::prefix('produtos')->group(function(){
     Route::get('/', [ProdutosController::class, 'index'])->name('produto.index');
@@ -44,16 +42,5 @@ Route::prefix('vendas')->group(function (){
     Route::get('/', [VendaController::class, 'index'])->name('venda.index');
     Route::get('/create', [VendaController::class, 'create'])->name('venda.create');
     Route::post('/create', [VendaController::class, 'store'])->name('venda.store');
-    Route::get('/comprovante-venda-email/{id}', [VendaController::class, 'enviarComprovanteVendaEmail'])->name('email.comprovante-venda');
+    Route::get('/comprovante-venda-email/{id}', [VendaController::class, 'enviarComprovanteVendaEmail'])->where('id', '[0-9]+')->name('email.comprovante-venda');
 });
-
-
-
-// Verb          Path                        Action  Route Name
-// GET           /users                      index   users.index
-// GET           /users/create               create  users.create
-// POST          /users                      store   users.store
-// GET           /users/{user}               show    users.show
-// GET           /users/{user}/edit          edit    users.edit
-// PUT|PATCH     /users/{user}               update  users.update
-// DELETE        /users/{user}               destroy users.destroy
