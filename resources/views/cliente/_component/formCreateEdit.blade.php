@@ -21,6 +21,17 @@
                 </div>
             @endif
         </div>
+        <div class="mb-3">
+            <label for="ds_email" class="form-label"> E-mail </label>
+            <input type="email" class="form-control {{ $errors->has('ds_email') ? 'is-invalid' : '' }}"
+                name="ds_email" id="ds_email"
+                value="{{ isset($retornoCliente->id) ? $retornoCliente->ds_email : old('ds_email') }}">
+            @if ($errors->has('ds_email'))
+                <div class="invalid-feedback">
+                    {{ $errors->first('ds_email') }}
+                </div>
+            @endif
+        </div>
         <div class="mb-2">
             <label for="nr_cep"> CEP </label>
             <input type="text" maxlength="8" class="form-control {{ $errors->has('nr_cep') ? 'is-invalid' : '' }}"

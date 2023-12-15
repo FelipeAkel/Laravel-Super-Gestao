@@ -43,6 +43,7 @@ Route::prefix('vendas')->group(function (){
     Route::get('/', [VendaController::class, 'index'])->name('venda.index');
     Route::get('/create', [VendaController::class, 'create'])->name('venda.create');
     Route::post('/create', [VendaController::class, 'store'])->name('venda.store');
+    Route::get('/comprovante-venda-email/{id}', [VendaController::class, 'enviarComprovanteVendaEmail'])->name('email.comprovante-venda');
 });
 
 

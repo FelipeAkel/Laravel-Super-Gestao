@@ -25,6 +25,7 @@ class ClienteFormRequest extends FormRequest
     {
         return [
             'no_cliente' => 'required | max:100',
+            'ds_email' => 'required | email | max:255',
             'nr_cep' => 'nullable | numeric | between:0,99999999',
             'ds_logradouro' => 'nullable | max:255',
             'ds_bairro' => 'nullable | max:255',
@@ -40,6 +41,8 @@ class ClienteFormRequest extends FormRequest
             'nullable' => 'O campo é opcional!',
             'numeric' => 'O campo deve ser numérico!',
             'no_cliente.max' => 'O máximo de caracteres é 100!',
+            'ds_email.email' => 'O campo deve ser um e-mail válido',
+            'ds_email.max' => 'O máximo de caracteres é 255!',
             'nr_cep.between' => 'O tamanho de 8 caracteres!',
             'ds_logradouro.max' => 'O máximo de caracteres é 255!',
             'ds_bairro.max' => 'O máximo de caracteres é 255!',

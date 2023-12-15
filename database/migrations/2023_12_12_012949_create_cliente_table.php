@@ -16,6 +16,7 @@ class CreateClienteTable extends Migration
         Schema::create('tb_cliente', function (Blueprint $table) {
             $table->id();
             $table->string('no_cliente', 100)->comment('Nome do Cliente');
+            $table->string('ds_email', 255)->comment('E-mail do Cliente');
             $table->integer('nr_cep')->nullable()->comment('Número do CEP');
             $table->string('ds_logradouro', 255)->nullable()->comment('Rua, Endereço do Cliente');
             $table->string('ds_bairro', 255)->nullable()->comment('Bairro do Endereço');

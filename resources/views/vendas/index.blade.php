@@ -17,6 +17,7 @@
                 <tr>
                     <th scope="col">ID</th>
                     <th scope="col">Cliente</th>
+                    <th scope="col">E-mail</th>
                     <th scope="col">Produto</th>
                     <th scope="col">Valor</th>
                     <th scope="col">Ações</th>
@@ -28,10 +29,11 @@
                     <tr>
                         <td>{{ $dadosVenda->id }}</td>
                         <td>{{ $dadosVenda->no_cliente }}</td>
+                        <td>{{ $dadosVenda->ds_email }}</td>
                         <td>{{ $dadosVenda->no_produto }}</td>
                         <td>R${{ number_format($dadosVenda->vl_preco, 2, ',', '.') }}</td>
                         <td>
-                            <a href="#" class="btn btn-info btn-sm">
+                            <a href="{{ route('email.comprovante-venda', $dadosVenda->id) }}" class="btn btn-info btn-sm">
                                 Enviar Email
                             </a>
                         </td>

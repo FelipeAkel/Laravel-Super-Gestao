@@ -8,14 +8,11 @@ use App\Models\Produtos;
 use App\Models\Cliente;
 use App\Http\Requests\VendaFormRequest;
 use Brian2694\Toastr\Facades\Toastr;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\ComprovanteVendaEmail;
 
 class VendaController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $retornoVendas = Venda::all();
@@ -33,17 +30,13 @@ class VendaController extends Controller
             $retornoCliente = Cliente::where('id', '=', $dadosVenda->id_cliente)->first();
             if(isset($retornoCliente)){
                 $retornoVendas[$indice]['no_cliente'] = $retornoCliente->no_cliente;
+                $retornoVendas[$indice]['ds_email'] = $retornoCliente->ds_email;
             }
         }
 
         return view('vendas.index', compact('retornoVendas'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         $retornoProduto = Produtos::all();
@@ -51,12 +44,6 @@ class VendaController extends Controller
         return view('vendas.create', compact('retornoProduto', 'retornoCliete'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(VendaFormRequest $request)
     {
         $retornoBanco = Venda::create($request->all());
@@ -68,48 +55,27 @@ class VendaController extends Controller
         return redirect()->route('venda.index');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
+    public function enviarComprovanteVendaEmail($id){
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
+        $retornoVenda = Venda::find($id);
+        
+        // Recuperando dados de um relacionamento
+        $retornoProduto = Produtos::where('id', '=', $retornoVenda->id_produto)->first();
+        $retornoVenda['no_produto'] = $retornoProduto->no_produto;
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
+        $retornoCliente = Cliente::where('id', '=', $retornoVenda->id_cliente)->first();
+        $retornoVenda['no_cliente'] = $retornoCliente->no_cliente;
+        $retornoVenda['ds_email'] = $retornoCliente->ds_email;
+        
+        $parametrosEmail = [
+            'nomeProduto' => $retornoVenda->no_produto,
+            'nomeCliente' => $retornoVenda->no_cliente,
+        ];
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        // Destinário e a funcionalidade criada passando os parâmetros 
+        Mail::to($retornoVenda->ds_email)->send(new ComprovanteVendaEmail($parametrosEmail));
+        
+        Toastr::success('E-mail enviado.', 'Sucesso!');
+        return redirect()->route('venda.index');
     }
 }
