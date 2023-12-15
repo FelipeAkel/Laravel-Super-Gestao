@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 
-    @include('email.layout._component.head')
+    @include('email.layout._partial.head')
 
 <body>
     <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="body">
@@ -16,7 +16,7 @@
 
                     @yield('corpo-email')
 
-                    @include('email.layout._component.footer')
+                    @include('email.layout._partial.footer')
 
                     <!-- END CENTERED WHITE CONTAINER -->
                 </div>

@@ -6,51 +6,69 @@
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <h1 class="h2">Dashboard</h1>
     </div>
+
+    <div class="row row-cols-1 row-cols-md-4 mb-4 text-center">
+        <div class="col">
+            <div class="card mb-3 rounded-3 shadow-sm border-primary">
+                <div class="card-header py-3 text-bg-primary border-primary">
+                    <h4 class="my-0 fw-normal">Vendas</h4>
+                </div>
+                <div class="card-body">
+                    <h1 class="card-title pricing-card-title">{{ $arrayDasboard['totalVendas'] }}</h1>
+                    <ul class="list-unstyled mt-3 mb-3">
+                        <li>Total</li>
+                    </ul>
+                    <a href="{{ route('venda.index') }}" class="w-100 btn btn-lg btn-outline-primary">Acessar página</a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card mb-3 rounded-3 shadow-sm border-primary">
+                <div class="card-header py-3 text-bg-primary border-primary">
+                    <h4 class="my-0 fw-normal">Produtos</h4>
+                </div>
+                <div class="card-body">
+                    <h1 class="card-title pricing-card-title">{{ $arrayDasboard['totalProdutos'] }}</h1>
+                    <ul class="list-unstyled mt-3 mb-3">
+                        <li>Total</li>
+                    </ul>
+                    <a href="{{ route('produto.index') }}" class="w-100 btn btn-lg btn-outline-primary">Acessar página</a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card mb-3 rounded-3 shadow-sm border-primary">
+                <div class="card-header py-3 text-bg-primary border-primary">
+                    <h4 class="my-0 fw-normal">Clientes</h4>
+                </div>
+                <div class="card-body">
+                    <h1 class="card-title pricing-card-title">{{ $arrayDasboard['totalClientes'] }}</h1>
+                    <ul class="list-unstyled mt-3 mb-3">
+                        <li>Total</li>
+                    </ul>
+                    <a href="{{ route('cliente.index') }}" class="w-100 btn btn-lg btn-outline-primary">Acessar página</a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card mb-3 rounded-3 shadow-sm border-primary">
+                <div class="card-header py-3 text-bg-primary border-primary">
+                    <h4 class="my-0 fw-normal">Usuários</h4>
+                </div>
+                <div class="card-body">
+                    <h1 class="card-title pricing-card-title">29</h1>
+                    <ul class="list-unstyled mt-3 mb-3">
+                        <li>Total</li>
+                    </ul>
+                    <a href="#" class="w-100 btn btn-lg btn-outline-primary">Acessar página</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr>
     
+    <h2>Gráfico Exemplo</h2>
     <canvas class="my-4 w-100" id="myChart" width="900" height="180"></canvas>
 
-    <h2>Section title</h2>
-    <div class="table-responsive small">
-        <table class="table table-striped table-sm">
-            <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Header</th>
-                    <th scope="col">Header</th>
-                    <th scope="col">Header</th>
-                    <th scope="col">Header</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>1,014</td>
-                    <td>dashboard</td>
-                    <td>illustrative</td>
-                    <td>rich</td>
-                    <td>data</td>
-                </tr>
-                <tr>
-                    <td>1,015</td>
-                    <td>random</td>
-                    <td>tabular</td>
-                    <td>information</td>
-                    <td>text</td>
-                </tr>
-                <tr>
-                    <td>1,014</td>
-                    <td>dashboard</td>
-                    <td>illustrative</td>
-                    <td>rich</td>
-                    <td>data</td>
-                </tr>
-                <tr>
-                    <td>1,015</td>
-                    <td>random</td>
-                    <td>tabular</td>
-                    <td>information</td>
-                    <td>text</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
 @endsection

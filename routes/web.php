@@ -2,6 +2,7 @@
 use App\Http\Controllers\ProdutosController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\VendaController;
+use App\Http\Controllers\DasboardController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -16,9 +17,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('dasboard');
-})->name('index.dasboard');
+Route::prefix('desboard')->group(function(){
+    Route::get('/', [DasboardController::class, 'index'])->name('dasboard.index');
+});
 
 Route::prefix('produtos')->group(function(){
     Route::get('/', [ProdutosController::class, 'index'])->name('produto.index');
