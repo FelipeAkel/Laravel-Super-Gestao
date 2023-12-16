@@ -2,9 +2,9 @@
 
 ## Sobre o Sistema Super Gestão - SG
 
-O sistema Super Gestão - SG trata-se de um website responsável por gerenciar Produtos, Clientes e Vendas. Com isso, pode-se esperar funcionalidades como CRUD (Create, Read, Update, Delete), não somente isso, mas também Filtros, Envio de E-mails, Recuperação de dados de Endereço após preenchimento do CEP, entros recursos. 
+O sistema Super Gestão - SG trata-se de um website responsável por gerenciar Produtos, Clientes e Vendas. Com isso, pode-se esperar funcionalidades como CRUD (Create, Read, Update, Delete), não somente isso, mas também Filtros, Envio de E-mails, Recuperação de dados de Endereço após preenchimento do CEP, entre outros recursos. 
 
-Destaca-se, que o objetivo principal não foi elaborar um sistema robusto com diversas funcionalidades e um banco de dados de igual maguinitude. E sim, consolidar meus estudos e apresentar o meu código limpo, claro e com boas práticas utilizando o framework Laravel.
+Destaca-se, que o objetivo principal não foi elaborar um sistema robusto com diversas funcionalidades e um banco de dados de igual magnitude. E sim, consolidar meus estudos e apresentar o meu código limpo, claro e com boas práticas utilizando o framework Laravel.
 
 ### Algumas Telas do SG
 
@@ -68,7 +68,7 @@ Para configurar o envio de e-mail do Sistema SG, é essecial seguir o passo a pa
 
     1. Necessário ter uma conta Gmail com autenticação de 2 fatores ativas.
     2. Acesse as configurações de sua conta:
-    2.1. Busque por "Senhas de app", geralmente está dentro de "Verificação em duas etapas", crie um registro com o nome Super Gestao - SG, por exemplo. Copie/salve a senha gerada.
+    2.1. Busque por "Senhas de app", geralmente está dentro de "Verificação em duas etapas", crie um registro com o nome Super Gestão - SG, por exemplo. Copie/salve a senha gerada.
     3. Abra o arquivo .env e altere o valor contido na variável:
     3.1 'MAIL_USERNAME=SEU_EMAIL@gmail.com', coloque o e-mail responsável por enviar os e-mails aos usuários.
     3.2 'MAIL_PASSWORD=SENHA_GERADA_GMAIL', coloque a senha gerada do Gmail, não coloque espaços.
