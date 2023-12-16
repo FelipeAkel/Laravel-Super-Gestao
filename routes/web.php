@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/desboard', [DasboardController::class, 'index'])->name('dasboard.index');
+Route::get('/', [DasboardController::class, 'index'])->name('dasboard.index');
 
 Route::prefix('produtos')->group(function(){
     Route::get('/', [ProdutosController::class, 'index'])->name('produto.index');
